@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC
+        "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sm.graduation.out.dao.GoOutMapper">
+
+    <select id="listAll" resultType="GoOut">
+        select * from go_out
+        <where>
+            <if test="usr!=''">name like concat("%",#{usr},"%") </if>
+        </where>
+    </select>
+
+
+    <select id="go_listAll" resultType="GoOut">
+        select * from go_out where name like concat("%",#{olderName},"%")
+    </select>
+
+
+</mapper>

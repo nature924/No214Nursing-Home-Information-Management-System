@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC
+        "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sm.graduation.usr.dao.UsrInfoMapper">
+
+
+    <select id="listAll" resultType="UsrInfo">
+        select usr_id,usr_login,usr_name,usr_sex,usr_tel,usr_addr,older_name from usr_info
+        <where>
+            <if test="usr!=''">usr_name like concat("%",#{usr},"%") </if>
+        </where>
+    </select>
+
+
+
+</mapper>

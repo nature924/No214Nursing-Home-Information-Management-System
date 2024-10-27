@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC
+        "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sm.graduation.health.dao.HealthRecordsMapper">
+
+
+    <select id="listAll" resultType="HealthRecords">
+        select * from health_records
+        <where>
+            <if test="usr!='' and usr!=null">name like concat("%",#{usr},"%") </if>
+        </where>
+    </select>
+
+    <resultMap id="older_d" type="com.sm.graduation.health.pojo.HealthRecords">
+        <id property="id" column="id"></id>
+        <result property="name" column="name"></result>
+        <result property="sex" column="sex"></result>
+        <result property="born" column="born"></result>
+        <result property="height" column="height"></result>
+        <result property="weight" column="weight"></result>
+        <result property="bloodType" column="blood_type"></result>
+        <result property="allergy" column="allergy"></result>
+        <result property="heartRate" column="heart_rate"></result>
+        <result property="bloodPressure" column="blood_pressure"></result>
+        <result property="bloodSugar" column="blood_sugar"></result>
+        <result property="smoke" column="smoke"></result>
+        <result property="createTime" column="create_time"></result>
+        <association property="dorm" javaType="com.sm.graduation.dormitory.pojo.DormitoryAllocation">
+            <id property="id" column="id"></id>
+            <result property="dormitory" column="dormitory"></result>
+            <result property="living" column="living"></result>
+            <result property="name" column="name"></result>
+        </association>
+    </resultMap>
+
+    <select id="older_dorm" resultMap="older_d">
+        select h.id,h.name,sex,born,height,weight,blood_type,allergy,heart_rate,blood_pressure,blood_sugar,smoke,create_time,d.id,d.dormitory,d.living,d.name
+        from health_records h,dormitory_allocation d
+        where  h.name=d.name and h.name=#{olderName}
+    </select>
+
+</mapper>

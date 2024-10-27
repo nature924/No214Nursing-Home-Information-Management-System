@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC
+        "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sm.graduation.high.dao.HighRiskMapper">
+
+
+    <select id="listAll" resultType="HighRisk">
+        select * from high_risk
+        <where>
+            <if test="usr!=''">name like concat("%",#{usr},"%") </if>
+        </where>
+    </select>
+
+
+
+</mapper>

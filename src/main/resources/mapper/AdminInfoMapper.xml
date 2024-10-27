@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC
+        "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sm.graduation.admin.dao.AdminInfoMapper">
+
+
+    <select id="listAll" resultType="AdminInfo">
+        select * from admin_info
+        <where>
+            <if test="user!=''">admin_name like concat("%",#{user},"%") </if>
+        </where>
+    </select>
+
+
+
+</mapper>

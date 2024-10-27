@@ -1,0 +1,29 @@
+#端口
+server:
+  port: 8080
+#spring
+spring:
+  profiles:
+    active: dev
+  devtools:
+    restart:
+      #热部署开关
+      enabled: true
+      #指定热部署的目录
+      additional-paths: src/main/java
+      #指定目录不更新
+      exclude: test/**
+  #资源访问
+  mvc:
+    static-path-pattern: /static/**
+# 显示sql
+logging:
+  level:
+    com.sm.graduation.*: debug
+
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql
+

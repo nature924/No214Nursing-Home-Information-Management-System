@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    username: root
+    password: root
+    url: jdbc:mysql://localhost:3306/ifmanage_design_wzq?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+    driver-class-name: com.mysql.jdbc.Driver
+
+# Mybatis
+mybatis:
+  type-aliases-package: com.sm.graduation.admin.pojo,com.sm.graduation.usr.pojo,com.sm.graduation.health.pojo,com.sm.graduation.high.pojo,com.sm.graduation.medication.pojo,com.sm.graduation.food.pojo,com.sm.graduation.out.pojo,com.sm.graduation.checkin.pojo,com.sm.graduation.dormitory.pojo,com.sm.graduation.accident.pojo,com.sm.graduation.visitor.pojo,com.sm.graduation.older.pojo,com.sm.graduation.nurse.pojo
+  mapper-locations: classpath:/mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+

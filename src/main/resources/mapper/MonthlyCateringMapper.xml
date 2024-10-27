@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC
+        "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sm.graduation.food.dao.MonthlyCateringMapper">
+
+
+    <select id="listAll" resultType="MonthlyCatering">
+        select * from monthly_catering
+        <where>
+            <if test="usr!=''">mon_time like concat("%",#{usr},"%") </if>
+        </where>
+    </select>
+
+
+
+</mapper>
